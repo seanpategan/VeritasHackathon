@@ -1,0 +1,95 @@
+{
+  "verification_note": "Each URL was fetched and its content checked against the supported claim on the verification date. NRCS pages could not be reached from the build environment (timeouts), so no NRCS page is cited.",
+  "sources": [
+    {
+      "id": "nass-cdl-faq",
+      "title": "Cropland Data Layer — Frequently Asked Questions",
+      "publisher": "USDA National Agricultural Statistics Service",
+      "url": "https://www.nass.usda.gov/Research_and_Science/Cropland/sarsfaqs2.php",
+      "supported_claim": "The CDL is produced from satellite imagery and ground reference data with a supervised (random forest) classification; producer's accuracy is generally 85–95% for major crop categories; edge pixels are harder to classify correctly.",
+      "excerpt": "The CDL is \"produced using satellite imagery and extensive agricultural ground reference data.\" Producer's accuracy \"is generally 85% to 95% correct for the major crop-specific land cover categories.\" Edge pixels \"tend to be more difficult to classify correctly.\"",
+      "scope": {"crops": ["corn", "wheat"], "geography": "Contiguous U.S."},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "sare-building-soils",
+      "title": "Building Soils for Better Crops: Ecological Management for Healthy Soils (4th edition)",
+      "publisher": "SARE Outreach (USDA Sustainable Agriculture Research and Education)",
+      "url": "https://www.sare.org/resources/building-soils-for-better-crops/",
+      "supported_claim": "Practical guide to soil health management, covering soil organic matter, minimizing tillage, cover crops and rotations, nutrient management, and soil testing.",
+      "excerpt": "Book by Fred Magdoff and Harold van Es (2021) with chapters on soil organic matter, minimizing tillage, cover crops, rotations, nutrient management, and \"Analyzing Your Soil and Crop.\"",
+      "scope": {"crops": ["general field crops"], "geography": "United States (general guidance)"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "mu-field-crops-soil-test",
+      "title": "Field crops soil testing",
+      "publisher": "University of Missouri Extension, Soil and Plant Testing Laboratory",
+      "url": "https://extension.missouri.edu/programs/soil-and-plant-testing-laboratory/spl-soil-analysis/spl-field-crops-soil-test",
+      "supported_claim": "How and when to collect soil samples for field crops; best to sample when fields are idle (summer for winter wheat, late fall or winter for spring-planted crops such as corn); composite samples of 15–20 cores covering no more than 20 acres.",
+      "excerpt": "\"The best time to sample is when the acreage is lying idle.\" Composite samples are built from 15 to 20 cores from uniform areas, each representing 20 acres or less.",
+      "scope": {"crops": ["corn", "wheat"], "geography": "Missouri (general sampling method broadly applicable; follow your state's lab guidance)"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "psu-no-till-soil",
+      "title": "No-till and the Soil",
+      "publisher": "Penn State Extension (Sjoerd W. Duiker)",
+      "url": "https://extension.psu.edu/no-till-and-the-soil",
+      "supported_claim": "Surface residue reduces erosion (30% residue cover reduces sheet and rill erosion about 70% vs. bare soil in rainfall-simulation studies) and conserves soil moisture; no-till soils run cooler in spring and corn may emerge more slowly at first.",
+      "excerpt": "Residue cover of 30% reduces sheet and rill erosion \"70% compared with bare soil.\" Residue acts as an insulating layer that conserves moisture; cooler no-till soils can slow early corn growth, described as a \"temporary effect.\"",
+      "scope": {"crops": ["corn", "general field crops"], "geography": "Pennsylvania / humid eastern U.S.; cited studies include Kentucky and the Midwest"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "umn-soil-moisture-sensors",
+      "title": "Soil moisture sensors for irrigation scheduling",
+      "publisher": "University of Minnesota Extension, Minnesota Crop News (V. Sharma and A. Nelson)",
+      "url": "https://blog-crop-news.extension.umn.edu/2019/04/soil-moisture-sensors-for-irrigation.html",
+      "supported_claim": "Soil moisture sensors (volumetric water content or soil tension) can guide irrigation timing; irrigation is triggered at a management allowable depletion and should refill to less than field capacity.",
+      "excerpt": "\"Efficient irrigation management can improve yields, grain quality, conserve water and energy.\" \"Always irrigate to replenish the soil moisture to less than field capacity.\"",
+      "scope": {"crops": ["irrigated field crops"], "geography": "Minnesota (principles apply to irrigated fields generally; thresholds are soil-specific)"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "mu-soil-moisture-tools",
+      "title": "Tools for monitoring soil moisture",
+      "publisher": "University of Missouri Extension, Irrigation program",
+      "url": "https://extension.missouri.edu/programs/irrigation/tools-for-monitoring-soil-moisture",
+      "supported_claim": "Irrigation scheduling can use soil water balance tools (e.g., the Crop Water Use app) or soil moisture sensors; more sensors give a better estimate; telemetry adds convenience but has practical drawbacks.",
+      "excerpt": "Describes the Woodruff chart and the Crop Water Use app (soil water balance) and soil moisture sensors; advises talking with an experienced, non-sales user before buying telemetry systems.",
+      "scope": {"crops": ["irrigated field crops"], "geography": "Missouri"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "sare-cover-crops-rotations",
+      "title": "Cover Crops for Sustainable Crop Rotations",
+      "publisher": "SARE Outreach (Andy Clark, 2015)",
+      "url": "https://www.sare.org/resources/cover-crops/",
+      "supported_claim": "Cover crops can reduce wind and water erosion, add organic matter, scavenge or supply nitrogen, and help suppress weeds; they require planning and payback may take years.",
+      "excerpt": "Protection against \"soil loss from wind and water erosion\" is perhaps the most obvious benefit; non-legumes produce \"large amounts of residue that adds soil organic matter\"; cover crops are a long-term investment that need the same planning as cash crops.",
+      "scope": {"crops": ["general field crops including corn and small grains"], "geography": "United States (general guidance)"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "sare-mccp",
+      "title": "Managing Cover Crops Profitably, 3rd Edition",
+      "publisher": "SARE Outreach",
+      "url": "https://www.sare.org/resources/managing-cover-crops-profitably-3rd-edition/",
+      "supported_claim": "Reference handbook on selecting and managing cover crop species in U.S. cropping systems.",
+      "excerpt": "SARE handbook on cover crop species selection and management.",
+      "scope": {"crops": ["general field crops"], "geography": "United States, with regional species guidance"},
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "mccc",
+      "title": "Midwest Cover Crops Council",
+      "publisher": "Midwest Cover Crops Council",
+      "url": "https://www.midwestcovercrops.org/",
+      "supported_claim": "Regional cover crop knowledge-sharing organization covering IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI (plus Manitoba and Ontario) that offers cover crop selector tools.",
+      "excerpt": "Offers \"Tools to assist in selecting cover crops for field crop and vegetable rotations.\"",
+      "scope": {"crops": ["field crops"], "geography": "IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI"},
+      "verified_on": "2026-11-14"
+    }
+  ]
+}

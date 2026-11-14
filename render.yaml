@@ -1,0 +1,33 @@
+# Render Blueprint (https://render.com/docs/blueprint-spec). Creates one Python web service.
+# Secrets marked sync:false are entered in the Render dashboard; they are never committed.
+services:
+  - type: web
+    name: fieldwise
+    runtime: python
+    plan: free            # free instances spin down after 15 idle minutes; change to "starter" for always-on
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -c gunicorn.conf.py wsgi:app
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: "1"        # one process -> the in-memory rate limiter is shared by all threads (resets on restart)
+      - key: GUNICORN_THREADS
+        value: "4"
+      - key: CACHE_DIR
+        value: /tmp/fieldwise-cache
+      - key: AI_ENABLED
+        value: "true"
+      - key: AI_MODEL
+        value: claude-haiku-5-5
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: TURNSTILE_SITE_KEY
+        sync: false
+      - key: TURNSTILE_SECRET_KEY
+        sync: false
+      - key: RATELIMIT_STORAGE_URI
+        value: memory://

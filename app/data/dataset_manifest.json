@@ -1,0 +1,109 @@
+{
+  "dataset_title": "USDA NASS Cropland Data Layer (CDL)",
+  "publisher": "USDA National Agricultural Statistics Service (NASS)",
+  "official_source_url": "https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php",
+  "metadata_url": "https://www.nass.usda.gov/Research_and_Science/Cropland/metadata/meta.php",
+  "faq_url": "https://www.nass.usda.gov/Research_and_Science/Cropland/sarsfaqs2.php",
+  "integration": {
+    "name": "CroplandCROS ArcGIS ImageServer (USDA ARS SCINet, hosts the NASS CDL)",
+    "service_endpoint": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+    "viewer_url": "https://croplandcros.scinet.usda.gov/",
+    "operations_used": [
+      "query (catalog of yearly rasters)",
+      "identify (point value)",
+      "exportImage (raw U8 class values, EPSG:3857)",
+      "rasterAttributeTable"
+    ],
+    "native_spatial_reference": "EPSG:3857 (Web Mercator)",
+    "pixel_type": "U8 categorical class codes",
+    "year_selection": "At runtime the app queries the catalog and locks the mosaic to the raster with the highest Year whose name matches YYYY_<res>m_cdls. No year is hard-coded."
+  },
+  "secondary_integration_checked": {
+    "name": "CropScape CDLService (George Mason University / USDA NASS)",
+    "endpoint": "https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLValue",
+    "notes": "Used only by scripts/check_dataset.py to cross-check the newest available year and a point value. GetCDLFile (bounded raster download) timed out / returned HTTP 502 in testing, so it is not used for interactive outlines. The CropScape WMS supports only EPSG:4326/EPSG:5070 GetMap and returns rendered colours (several double-crop classes share colours with corn/wheat), so raw class values from the ImageServer are used instead."
+  },
+  "geographic_coverage": "Contiguous United States (CONUS). Alaska and Hawaii are not covered by the CONUS CDL; FieldWise restricts selection to a CONUS bounding box.",
+  "conus_bbox_wgs84": [
+    -125.0,
+    24.4,
+    -66.9,
+    49.5
+  ],
+  "categories": {
+    "corn": {
+      "label": "Corn",
+      "codes": {
+        "1": {
+          "official_name": "Corn",
+          "subtype": null
+        },
+        "12": {
+          "official_name": "Sweet Corn",
+          "subtype": "Sweet corn"
+        },
+        "13": {
+          "official_name": "Pop or Orn Corn",
+          "subtype": "Popcorn or ornamental corn"
+        }
+      }
+    },
+    "wheat": {
+      "label": "Wheat",
+      "codes": {
+        "22": {
+          "official_name": "Durum Wheat",
+          "subtype": "Durum wheat"
+        },
+        "23": {
+          "official_name": "Spring Wheat",
+          "subtype": "Spring wheat"
+        },
+        "24": {
+          "official_name": "Winter Wheat",
+          "subtype": "Winter wheat"
+        }
+      }
+    }
+  },
+  "excluded_mixed_categories": {
+    "explanation": "Double-crop classes that include corn or wheat are NOT shown under the simple corn or wheat labels and do not receive crop-specific suggestions. If clicked, the official class name is reported as-is.",
+    "codes": {
+      "26": "Dbl Crop WinWht/Soybeans",
+      "225": "Dbl Crop WinWht/Corn",
+      "226": "Dbl Crop Oats/Corn",
+      "228": "Dbl Crop Triticale/Corn",
+      "230": "Dbl Crop Lettuce/Durum Wht",
+      "234": "Dbl Crop Durum Wht/Sorghum",
+      "236": "Dbl Crop WinWht/Sorghum",
+      "237": "Dbl Crop Barley/Corn",
+      "238": "Dbl Crop WinWht/Cotton",
+      "241": "Dbl Crop Corn/Soybeans"
+    }
+  },
+  "class_codes_source": "Raster attribute table of the 2025 raster (rasterAttributeTable endpoint of the service above), field Class_Names.",
+  "known_limitations": [
+    "The CDL is a satellite-based supervised classification (random forest), not a field survey. NASS FAQ: producer's accuracy is \"generally 85% to 95% correct for the major crop-specific land cover categories\"; accuracy varies by state and crop.",
+    "Pixels at field edges are harder to classify correctly (NASS FAQ).",
+    "Classified regions are connected pixels of one class. They are not ownership parcels, legal boundaries, or verified farm fields.",
+    "The classification describes the stated growing season only. It is not proof of what is planted now.",
+    "The CDL does not measure soil, irrigation, fertilizer use, disease, management practices or yield."
+  ],
+  "fallback": {
+    "policy": "If the live catalog query fails, the app uses the last verified record below and labels the dataset status as 'last verified record' with its check timestamp. It never silently substitutes a different year.",
+    "fallback_year_in_use": null,
+    "reason": null
+  },
+  "last_verified": {
+    "year": 2025,
+    "raster_id": 40,
+    "raster_name": "2025_10m_cdls",
+    "resolution_m": 10,
+    "checked_at": "2026-11-14T14:09:36Z",
+    "evidence": [
+      "ImageServer catalog query returned 2025_10m_cdls (OBJECTID 40) as the highest Year.",
+      "ImageServer identify at Story County, Iowa returned class 1 (Corn) with the mosaic locked to raster 40.",
+      "CropScape GetCDLValue for year=2026 reported valid years 1997-2025."
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "note": "Farmer profiles published by SARE in its Cover Crops book. Summaries were checked against the source pages on the verification date. They are contextual evidence from other farms, not predictions for any selected area. No outcome figures are repeated here.",
+  "case_studies": [
+    {
+      "id": "cs-upton-il",
+      "name": "Ralph \"Junior\" Upton farm (SARE farmer profile)",
+      "source_url": "https://www.sare.org/publications/cover-crop-book/junior-upton-illinois/",
+      "publisher": "SARE Outreach",
+      "practices": ["cover_crops", "no_till"],
+      "crops": ["corn"],
+      "region": "Southern Illinois",
+      "summary": "Corn and soybean farm that no-tilled for decades and drilled multi-species cover crop mixes (always including cereal rye, annual ryegrass and hairy vetch before corn). The profile cites erosion control on hilly ground, weed control and soil health as motivations. Upton retired after the 2022 harvest.",
+      "applicability_limits": "Southern Illinois soils and climate on a corn–soybean rotation; herbicide termination and species choices may not transfer to other regions or to wheat.",
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "cs-brandt-oh",
+      "name": "David Brandt farm (SARE farmer profile)",
+      "source_url": "https://www.sare.org/publications/cover-crop-book/david-brandt-ohio/",
+      "publisher": "SARE Outreach",
+      "practices": ["cover_crops", "no_till", "rotation"],
+      "crops": ["corn", "wheat"],
+      "region": "Central Ohio (southeast of Columbus)",
+      "summary": "Corn, soybean and wheat farm that began no-till in 1969 and used legume and multi-species cover crops, including diverse mixes drilled after winter wheat harvest within a corn–soybean–small grain rotation. The profile notes Brandt died in 2023, after the profile was written.",
+      "applicability_limits": "Long-term (decades) no-till system in humid central Ohio; results reflect many years of management and may not apply to a field just starting these practices.",
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "cs-desutter-in",
+      "name": "Dan DeSutter farm (SARE farmer profile)",
+      "source_url": "https://www.sare.org/publications/cover-crop-book/dan-desutter-indiana/",
+      "publisher": "SARE Outreach",
+      "practices": ["cover_crops", "no_till", "rotation"],
+      "crops": ["corn", "wheat"],
+      "region": "West central Indiana",
+      "summary": "Large no-till family farm (no-till since 1991) that diversified a corn–soybean rotation with small grains and other crops. Winter wheat is the farm's preferred crop before corn, followed by a diverse cover crop mix after wheat harvest; covers are also grazed by cattle.",
+      "applicability_limits": "Operation includes livestock grazing and has transitioned largely to organic certification; management context differs from many conventional grain farms.",
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "cs-emmons-ok",
+      "name": "Jimmy and Ginger Emmons farm (SARE farmer profile)",
+      "source_url": "https://www.sare.org/publications/cover-crop-book/jimmy-and-ginger-emmons-oklahoma/",
+      "publisher": "SARE Outreach",
+      "practices": ["cover_crops", "no_till", "rotation"],
+      "crops": ["wheat"],
+      "region": "Western Oklahoma",
+      "summary": "No-till (since 2010) operation in a semi-arid area where winter wheat is the primary winter cereal. Every field is planted to cover crops, rotations aim for at least four years, and cattle graze covers and native range.",
+      "applicability_limits": "Semi-arid western Oklahoma with integrated cattle grazing; cover crop water use and timing are critical in low-rainfall areas.",
+      "verified_on": "2026-11-14"
+    },
+    {
+      "id": "cs-zahradka-nd",
+      "name": "Justin and Molly Zahradka farm (SARE farmer profile)",
+      "source_url": "https://www.sare.org/publications/cover-crop-book/justin-and-molly-zahradka-north-dakota/",
+      "publisher": "SARE Outreach",
+      "practices": ["cover_crops", "no_till", "rotation"],
+      "crops": ["wheat"],
+      "region": "Northeast North Dakota",
+      "summary": "No-till crop and livestock operation growing primarily soybeans and wheat. About a third of row-crop acres are cover cropped each year, with radishes and turnips following small grains, and most covers are grazed.",
+      "applicability_limits": "The profile does not state whether the wheat is spring or durum; the operation's main focus is livestock, which shapes its cover crop choices.",
+      "verified_on": "2026-11-14"
+    }
+  ]
+}

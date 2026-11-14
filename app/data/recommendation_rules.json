@@ -1,0 +1,450 @@
+{
+  "ruleset_version": "1.1.0",
+  "category_order": [
+    "soil_health",
+    "water_efficiency",
+    "rotation_cover_crops"
+  ],
+  "category_labels": {
+    "soil_health": "Soil health",
+    "water_efficiency": "Water efficiency",
+    "rotation_cover_crops": "Crop rotation and cover crops"
+  },
+  "permitted_inputs": [
+    "verified classified crop",
+    "crop subtype",
+    "dataset year",
+    "state (from Census lookup), only for rules with a stated geographic basis",
+    "optional user-reported context (fixed dropdown answers, labeled unverified)"
+  ],
+  "rules": [
+    {
+      "id": "SH-01-soil-test",
+      "version": "1.1.0",
+      "category": "soil_health",
+      "display_order": 10,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "conus",
+        "basis": "Soil sampling guidance is general; sampling depth and timing should follow the user's state land-grant laboratory."
+      },
+      "prerequisites": [
+        {
+          "id": "no_recent_soil_test",
+          "description": "No soil test in the last 3 years",
+          "available": false,
+          "blocking_when_unknown": false,
+          "answered_by": {
+            "field": "soil_test",
+            "met": [
+              "old_or_never"
+            ],
+            "not_met": [
+              "recent"
+            ]
+          }
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat in the CDL year.",
+      "on_missing_prerequisite": "omit",
+      "content": {
+        "action": "Consider whether a current soil test is available before making nutrient or lime decisions for this area.",
+        "why": "Extension guidance treats soil sampling as the starting point for fertility decisions; a test shows actual nutrient and pH levels rather than assumptions.",
+        "general_context": {
+          "corn": "Missouri Extension notes the best time to sample is when ground is idle; for spring-planted crops such as corn that is typically late fall or winter.",
+          "wheat": "Missouri Extension notes the best time to sample is when ground is idle; for winter wheat that is typically summer, after harvest."
+        }
+      },
+      "cost_effort": {
+        "level": "Low",
+        "explanation": "Sampling takes field time and a laboratory fee; it does not require new equipment."
+      },
+      "source_ids": [
+        "mu-field-crops-soil-test",
+        "sare-building-soils"
+      ],
+      "case_study_ids": [],
+      "limitations": [
+        "FieldWise has no soil data for this area and does not know whether a recent soil test exists."
+      ],
+      "verify_before_acting": [
+        "Whether a recent soil test already exists for this ground.",
+        "Your state laboratory's recommended sampling depth, timing and area per composite sample."
+      ]
+    },
+    {
+      "id": "SH-02-reduce-tillage",
+      "version": "1.1.0",
+      "category": "soil_health",
+      "display_order": 20,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "conus",
+        "basis": "General extension guidance; suitability varies with soil drainage, slope and climate."
+      },
+      "prerequisites": [
+        {
+          "id": "current_tillage",
+          "description": "The area is currently managed with conventional tillage",
+          "available": false,
+          "answered_by": {
+            "field": "tillage",
+            "met": [
+              "conventional"
+            ],
+            "not_met": [
+              "reduced",
+              "no_till"
+            ]
+          }
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat; current tillage is unknown, so the rule is presented conditionally.",
+      "on_missing_prerequisite": "conditional",
+      "conditional_prefix": "If this area is currently tilled:",
+      "content": {
+        "action": "Consider assessing whether reducing tillage intensity (for example, no-till or other residue-retaining systems) could fit this operation.",
+        "why": "Keeping crop residue on the surface can reduce sheet and rill erosion; Penn State Extension reports that about 30% residue cover reduced this erosion roughly 70% compared with bare soil in rainfall-simulation studies.",
+        "general_context": {
+          "corn": "Penn State Extension notes no-till soils run cooler in spring, so corn may emerge and grow more slowly early in the season — described as a temporary effect.",
+          "wheat": "Residue-retaining systems are commonly used in small-grain rotations; equipment and residue management needs differ by region."
+        }
+      },
+      "cost_effort": {
+        "level": "Depends on field conditions",
+        "explanation": "May require planter or drill changes and new residue, weed and fertility management skills; suitability depends on soil drainage and slope."
+      },
+      "source_ids": [
+        "psu-no-till-soil",
+        "sare-building-soils"
+      ],
+      "case_study_ids": [
+        "cs-brandt-oh",
+        "cs-upton-il",
+        "cs-desutter-in",
+        "cs-emmons-ok",
+        "cs-zahradka-nd"
+      ],
+      "limitations": [
+        "The CDL does not show tillage practices; this area may already use reduced tillage."
+      ],
+      "verify_before_acting": [
+        "Current tillage practice and residue cover.",
+        "Soil drainage and compaction on this ground.",
+        "Equipment needs and local experience — discuss suitability with a local agricultural adviser or extension office."
+      ]
+    },
+    {
+      "id": "WE-01-soil-moisture-monitoring",
+      "version": "1.1.0",
+      "category": "water_efficiency",
+      "display_order": 10,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "conus",
+        "basis": "Applies only where a field is irrigated; irrigation status is not available from the CDL."
+      },
+      "prerequisites": [
+        {
+          "id": "irrigated",
+          "description": "The area is irrigated",
+          "available": false,
+          "answered_by": {
+            "field": "irrigation",
+            "met": [
+              "irrigated"
+            ],
+            "not_met": [
+              "not_irrigated"
+            ]
+          }
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat; irrigation status is unknown, so the rule is presented conditionally.",
+      "on_missing_prerequisite": "conditional",
+      "conditional_prefix": "If this area is irrigated:",
+      "content": {
+        "action": "Consider assessing whether soil-moisture monitoring or a soil water balance tool could help time irrigation.",
+        "why": "Extension guidance describes using soil moisture sensors or water-balance tools to decide when to irrigate and to avoid refilling beyond field capacity, which can conserve water and energy.",
+        "general_context": {
+          "corn": "Thresholds for when to irrigate depend on soil type and crop stage; extension materials describe a management allowable depletion approach.",
+          "wheat": "Thresholds for when to irrigate depend on soil type and crop stage; extension materials describe a management allowable depletion approach."
+        }
+      },
+      "cost_effort": {
+        "level": "Moderate",
+        "explanation": "Requires sensors or a scheduling tool plus regular readings during the season; telemetry adds convenience but has practical drawbacks."
+      },
+      "source_ids": [
+        "umn-soil-moisture-sensors",
+        "mu-soil-moisture-tools"
+      ],
+      "case_study_ids": [],
+      "limitations": [
+        "FieldWise cannot tell whether this area is irrigated or how it is currently scheduled.",
+        "No irrigation schedule or amount is provided."
+      ],
+      "verify_before_acting": [
+        "Whether the area is irrigated at all.",
+        "Current scheduling method.",
+        "Soil water-holding characteristics and your state extension's irrigation guidance."
+      ]
+    },
+    {
+      "id": "WE-02-residue-moisture",
+      "version": "1.1.0",
+      "category": "water_efficiency",
+      "display_order": 20,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "conus",
+        "basis": "General extension guidance; cited research is from humid eastern states."
+      },
+      "prerequisites": [
+        {
+          "id": "residue_not_retained",
+          "description": "Crop residue is removed after harvest",
+          "available": false,
+          "blocking_when_unknown": false,
+          "answered_by": {
+            "field": "residue",
+            "met": [
+              "partly_removed",
+              "removed"
+            ],
+            "not_met": [
+              "left"
+            ]
+          }
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat.",
+      "on_missing_prerequisite": "omit",
+      "content": {
+        "action": "Consider whether keeping crop residue on the soil surface could help conserve soil moisture in this system.",
+        "why": "Penn State Extension describes surface residue as an insulating layer that conserves moisture, citing Kentucky research that found more evaporative water loss from tilled than from no-till soil before canopy closure.",
+        "general_context": {
+          "corn": "Corn produces substantial residue; how much is retained depends on harvest and tillage choices.",
+          "wheat": "Wheat stubble left after harvest is one form of surface residue; retention depends on tillage and any residue removal."
+        }
+      },
+      "cost_effort": {
+        "level": "Depends on field conditions",
+        "explanation": "Mostly a management change linked to tillage choices; effects depend on climate, soil and residue amount."
+      },
+      "source_ids": [
+        "psu-no-till-soil"
+      ],
+      "case_study_ids": [],
+      "limitations": [
+        "The CDL does not show residue levels or soil moisture for this area."
+      ],
+      "verify_before_acting": [
+        "Current residue management.",
+        "Whether residue is used for other purposes (e.g., baling or grazing).",
+        "Local experience with residue and planting conditions."
+      ]
+    },
+    {
+      "id": "RC-01-cover-crops",
+      "version": "1.1.0",
+      "category": "rotation_cover_crops",
+      "display_order": 10,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "conus",
+        "basis": "General SARE guidance; species and timing are region-specific."
+      },
+      "prerequisites": [
+        {
+          "id": "no_existing_cover_crop",
+          "description": "The area does not already use cover crops",
+          "available": false,
+          "answered_by": {
+            "field": "cover_crops",
+            "met": [
+              "no"
+            ],
+            "not_met": [
+              "yes"
+            ]
+          }
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat; existing cover crop use is unknown, so the rule is presented conditionally.",
+      "on_missing_prerequisite": "conditional",
+      "conditional_prefix": "If cover crops are not already used here:",
+      "content": {
+        "action": "Consider assessing whether a cover crop could fit between cash crops in this rotation.",
+        "why": "SARE describes cover crops as reducing wind and water erosion, adding organic matter, scavenging or supplying nitrogen, and helping suppress weeds — while noting they need planning and payback may take several years.",
+        "general_context": {
+          "corn": "Timing is often the main constraint after a full-season crop such as corn; seeding windows depend on harvest date and region.",
+          "wheat": "Harvest of small grains such as wheat can leave a summer or fall window for a cover crop, depending on region and rainfall."
+        }
+      },
+      "cost_effort": {
+        "level": "Moderate",
+        "explanation": "Involves seed, planting and termination work and new management decisions; SARE notes payback may take a few years depending on the goal."
+      },
+      "source_ids": [
+        "sare-cover-crops-rotations",
+        "sare-mccp"
+      ],
+      "case_study_ids": [
+        "cs-upton-il",
+        "cs-brandt-oh",
+        "cs-desutter-in",
+        "cs-emmons-ok",
+        "cs-zahradka-nd"
+      ],
+      "limitations": [
+        "Whether cover crops are already used here is unknown.",
+        "In dry regions, cover crop water use needs careful consideration."
+      ],
+      "verify_before_acting": [
+        "Existing cover crop use and herbicide carryover restrictions.",
+        "Seeding and termination windows for your region.",
+        "Species suited to your climate — discuss with a local agricultural adviser."
+      ]
+    },
+    {
+      "id": "RC-02-mccc-selector",
+      "version": "1.1.0",
+      "category": "rotation_cover_crops",
+      "display_order": 20,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "states",
+        "states": [
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "MI",
+          "MN",
+          "MO",
+          "NE",
+          "ND",
+          "OH",
+          "SD",
+          "WI"
+        ],
+        "basis": "Member states covered by the Midwest Cover Crops Council."
+      },
+      "prerequisites": [
+        {
+          "id": "state_known",
+          "description": "The selected point's state was resolved",
+          "available": true
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat AND its state is one of the Midwest Cover Crops Council states.",
+      "on_missing_prerequisite": "omit",
+      "content": {
+        "action": "Consider using the Midwest Cover Crops Council's selector tools to explore cover crop species suited to this state.",
+        "why": "The Council shares regional cover crop knowledge and offers tools to help select cover crops for field crop rotations in its member states.",
+        "general_context": {
+          "corn": "Regional tools can narrow species and timing options before a conversation with a local adviser.",
+          "wheat": "Regional tools can narrow species and timing options before a conversation with a local adviser."
+        }
+      },
+      "cost_effort": {
+        "level": "Low",
+        "explanation": "An online tool; the effort is the time to review options."
+      },
+      "source_ids": [
+        "mccc"
+      ],
+      "case_study_ids": [],
+      "limitations": [
+        "Tool output is general guidance for the state or region, not a field-specific prescription."
+      ],
+      "verify_before_acting": [
+        "Local seed availability and termination plans.",
+        "Fit with your cash crop rotation."
+      ]
+    },
+    {
+      "id": "RC-03-rotation-diversity",
+      "version": "1.1.0",
+      "category": "rotation_cover_crops",
+      "display_order": 30,
+      "crops": [
+        "corn",
+        "wheat"
+      ],
+      "geographic_scope": {
+        "type": "conus",
+        "basis": "General SARE guidance on diversified rotations."
+      },
+      "prerequisites": [
+        {
+          "id": "rotation_history",
+          "description": "The area's previous crop rotation",
+          "available": false,
+          "answered_by": {
+            "field": "previous_crop",
+            "met": [
+              "corn",
+              "soybeans",
+              "wheat_small_grain",
+              "other",
+              "fallow"
+            ],
+            "not_met": []
+          }
+        }
+      ],
+      "trigger": "Selected area is verified as corn or wheat; rotation history is not available from a single-year classification, so the rule is presented conditionally.",
+      "on_missing_prerequisite": "conditional",
+      "conditional_prefix": "Depending on this area's rotation history (not known from one year of data):",
+      "content": {
+        "action": "Consider discussing whether a more diverse rotation — for example, including a small grain or another crop — could suit this operation.",
+        "why": "SARE resources describe diversified rotations and cover crops together as tools for soil organic matter, nutrient cycling and weed management.",
+        "general_context": {
+          "corn": "One published farm profile (Indiana) describes growing winter wheat before corn with a cover crop mix after wheat harvest.",
+          "wheat": "Small grains such as wheat are a common way rotations are diversified; the following crop choice depends on region and markets."
+        }
+      },
+      "cost_effort": {
+        "level": "Requires local assessment",
+        "explanation": "Depends on markets, equipment, storage and local agronomy; FieldWise has no information about these."
+      },
+      "source_ids": [
+        "sare-cover-crops-rotations",
+        "sare-building-soils"
+      ],
+      "case_study_ids": [
+        "cs-desutter-in",
+        "cs-brandt-oh"
+      ],
+      "limitations": [
+        "A single year of CDL data does not reveal the rotation history.",
+        "No market or profitability assessment is made."
+      ],
+      "verify_before_acting": [
+        "Past rotation on this ground.",
+        "Market access for any added crop.",
+        "Discuss suitability with a local agricultural adviser."
+      ]
+    }
+  ]
+}

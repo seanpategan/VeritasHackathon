@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "intro": "Optional. Tell FieldWise what you know about this area so suggestions and the AI audit can be more specific. Answers are treated as reported by you and are not verified. Leave anything as \"Not sure\".",
+  "questions": [
+    {
+      "id": "current_crop",
+      "label": "What is planted here this season?",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "matches", "label": "Same crop as the USDA classification"},
+        {"value": "different", "label": "A different crop"}
+      ]
+    },
+    {
+      "id": "soil_texture",
+      "label": "Main soil texture",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "sandy", "label": "Sandy / coarse"},
+        {"value": "loamy", "label": "Loamy / medium"},
+        {"value": "clayey", "label": "Clayey / fine"}
+      ]
+    },
+    {
+      "id": "soil_test",
+      "label": "Most recent soil test",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "recent", "label": "Within the last 3 years"},
+        {"value": "old_or_never", "label": "Older than 3 years, or never"}
+      ]
+    },
+    {
+      "id": "irrigation",
+      "label": "Is this area irrigated?",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "irrigated", "label": "Yes, irrigated"},
+        {"value": "not_irrigated", "label": "No, rainfed"}
+      ]
+    },
+    {
+      "id": "tillage",
+      "label": "Current tillage",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "conventional", "label": "Conventional / full tillage"},
+        {"value": "reduced", "label": "Reduced tillage"},
+        {"value": "no_till", "label": "No-till"}
+      ]
+    },
+    {
+      "id": "residue",
+      "label": "Crop residue after harvest",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "left", "label": "Mostly left on the field"},
+        {"value": "partly_removed", "label": "Partly removed (baled or grazed)"},
+        {"value": "removed", "label": "Mostly removed or burned"}
+      ]
+    },
+    {
+      "id": "cover_crops",
+      "label": "Are cover crops used here?",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "yes", "label": "Yes"},
+        {"value": "no", "label": "No"}
+      ]
+    },
+    {
+      "id": "previous_crop",
+      "label": "Crop grown here the previous season",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "corn", "label": "Corn"},
+        {"value": "soybeans", "label": "Soybeans"},
+        {"value": "wheat_small_grain", "label": "Wheat or another small grain"},
+        {"value": "other", "label": "Another crop"},
+        {"value": "fallow", "label": "Fallow"}
+      ]
+    },
+    {
+      "id": "nutrient_source",
+      "label": "Main nutrient source",
+      "options": [
+        {"value": "unknown", "label": "Not sure"},
+        {"value": "commercial", "label": "Commercial fertilizer"},
+        {"value": "manure", "label": "Manure or compost"},
+        {"value": "both", "label": "Both"},
+        {"value": "none", "label": "None"}
+      ]
+    }
+  ]
+}

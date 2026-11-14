@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FieldWise — Explore farmland. Understand better practices.</title>
+  <meta name="description" content="Explore USDA-mapped corn and wheat across the contiguous United States and read evidence-linked farming practices worth investigating.">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <!-- MapLibre GL JS 4.7.1 (BSD-3-Clause), version-pinned from unpkg -->
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#search-input">Skip to search</a>
+
+  <main id="map" aria-label="Satellite map of the contiguous United States. Click a mapped crop area to select it."></main>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c4 5 6 9 6 13a6 6 0 0 1-12 0c0-4 2-8 6-13Z" fill="currentColor"/><path d="M16 12v17" stroke="#f6f1e4" stroke-width="2" stroke-linecap="round"/></svg>
+      <div>
+        <p class="brand-name">FieldWise</p>
+        <p class="brand-tag">Explore farmland. Understand better practices.</p>
+      </div>
+    </div>
+
+    <form class="search" role="search" autocomplete="off" onsubmit="return false">
+      <label class="visually-hidden" for="search-input">Search a town or ZIP code</label>
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="search-input" type="search" placeholder="Search a town or ZIP code" role="combobox"
+             aria-autocomplete="list" aria-expanded="false" aria-controls="search-results" maxlength="80">
+      <ul id="search-results" class="search-results" role="listbox" hidden></ul>
+    </form>
+
+    <div class="bookmarks">
+      <label class="visually-hidden" for="bookmark-select">Jump to an example location</label>
+      <select id="bookmark-select">
+        <option value="">Example locations…</option>
+        {% for b in bookmarks %}
+        <option value="{{ b.id }}">{{ b.label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </header>
+
+  <section class="layers-card" aria-labelledby="layers-title">
+    <div class="layers-head">
+      <h2 id="layers-title">Crop coverage</h2>
+      <button type="button" class="icon-btn layers-collapse" id="layers-collapse" aria-expanded="true" aria-controls="layers-body" title="Collapse legend">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="layers-body">
+      <p class="dataset-badge" id="dataset-badge"><span class="dot"></span><span id="dataset-label">Checking USDA dataset…</span></p>
+      <fieldset class="toggles">
+        <legend class="visually-hidden">Layers</legend>
+        <label class="toggle"><input type="checkbox" id="toggle-corn" checked><span class="swatch swatch-corn" aria-hidden="true"></span>Corn</label>
+        <label class="toggle"><input type="checkbox" id="toggle-wheat" checked><span class="swatch swatch-wheat" aria-hidden="true"></span>Wheat</label>
+      </fieldset>
+      <ul class="legend" id="legend" aria-label="Legend"></ul>
+      <p class="hint" id="zoom-hint" role="status" aria-live="polite"></p>
+      <details class="fine-print">
+        <summary>About this map</summary>
+        <p id="processing-overview"></p>
+        <p id="processing-outlines"></p>
+        <p>Double-crop classes (for example “Dbl Crop WinWht/Soybeans”) are not shown as corn or wheat.</p>
+        <p>Satellite imagery: USGS The National Map orthoimagery. Imagery dates vary by area and are <strong>not synchronized</strong> with the USDA classification year.</p>
+        <p>Search uses U.S. Census Gazetteer places and ZIP Code Tabulation Areas. It is place navigation, not a property or ownership lookup.</p>
+        <p><a href="/api/sources" target="_blank" rel="noopener">All sources and case studies (JSON)</a></p>
+      </details>
+    </div>
+  </section>
+
+  <aside id="panel" class="panel" aria-labelledby="panel-title" hidden>
+    <div class="panel-header">
+      <button type="button" class="sheet-handle" id="sheet-handle" aria-label="Expand or collapse details"><span></span></button>
+      <h2 id="panel-title" tabindex="-1">Selected crop area</h2>
+      <button type="button" class="btn-ghost" id="clear-selection">Clear selection</button>
+    </div>
+    <div class="panel-body" id="panel-body" aria-live="polite" aria-busy="false"></div>
+  </aside>
+
+  <div id="banner" class="banner" role="alert" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script>
+    window.FIELDWISE = {
+      bookmarks: {{ bookmarks | tojson }},
+      turnstileSiteKey: {{ turnstile_site_key | tojson }},
+      ai: {{ ai_status | tojson }},
+      contextQuestions: {{ context_questions | tojson }}
+    };
+  </script>
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/recommendations.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+{
+  "note": "Real locations classified as the stated crop in the CDL year shown. Bookmarks describe counties, not farms or owners.",
+  "bookmarks": [
+    {
+      "id": "story-ia",
+      "label": "Corn \u2014 Story County, Iowa",
+      "area": "Story County, Iowa",
+      "lon": -93.54994,
+      "lat": 42.04996,
+      "zoom": 14.5,
+      "expected_code": 1,
+      "expected_class": "Corn",
+      "verified_year": 2025,
+      "verified_raster": "2025_10m_cdls",
+      "verified_at": "2026-11-14T13:56:50Z"
+    },
+    {
+      "id": "mclean-il",
+      "label": "Corn \u2014 McLean County, Illinois",
+      "area": "McLean County, Illinois",
+      "lon": -88.84994,
+      "lat": 40.55346,
+      "zoom": 14.5,
+      "expected_code": 1,
+      "expected_class": "Corn",
+      "verified_year": 2025,
+      "verified_raster": "2025_10m_cdls",
+      "verified_at": "2026-11-14T13:56:50Z"
+    },
+    {
+      "id": "sumner-ks",
+      "label": "Winter Wheat \u2014 Sumner County, Kansas",
+      "area": "Sumner County, Kansas",
+      "lon": -97.54634,
+      "lat": 37.14996,
+      "zoom": 14.5,
+      "expected_code": 24,
+      "expected_class": "Winter Wheat",
+      "verified_year": 2025,
+      "verified_raster": "2025_10m_cdls",
+      "verified_at": "2026-11-14T13:56:51Z"
+    },
+    {
+      "id": "whitman-wa",
+      "label": "Winter Wheat \u2014 Whitman County, Washington (Palouse)",
+      "area": "Whitman County, Washington (Palouse)",
+      "lon": -117.3523,
+      "lat": 46.95184,
+      "zoom": 14.5,
+      "expected_code": 24,
+      "expected_class": "Winter Wheat",
+      "verified_year": 2025,
+      "verified_raster": "2025_10m_cdls",
+      "verified_at": "2026-11-14T13:56:51Z"
+    },
+    {
+      "id": "cavalier-nd",
+      "label": "Spring Wheat \u2014 Cavalier County, North Dakota",
+      "area": "Cavalier County, North Dakota",
+      "lon": -98.44952,
+      "lat": 48.74528,
+      "zoom": 14.5,
+      "expected_code": 23,
+      "expected_class": "Spring Wheat",
+      "verified_year": 2025,
+      "verified_raster": "2025_10m_cdls",
+      "verified_at": "2026-11-14T13:56:51Z"
+    },
+    {
+      "id": "divide-nd",
+      "label": "Durum Wheat \u2014 Divide County, North Dakota",
+      "area": "Divide County, North Dakota",
+      "lon": -103.3972,
+      "lat": 48.84906,
+      "zoom": 14.5,
+      "expected_code": 22,
+      "expected_class": "Durum Wheat",
+      "verified_year": 2025,
+      "verified_raster": "2025_10m_cdls",
+      "verified_at": "2026-11-14T13:56:51Z"
+    }
+  ]
+}
