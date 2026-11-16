@@ -111,8 +111,8 @@ Run the tests with `pytest`.
 
 | Full name | Email | School |
 |---|---|---|
-| Sean Egan | _email_ | _school_ |
-| Kingsley Tran | _email_ | _school_ |
+| Sean Egan | egans27@fordhamprep.org | Fordham Preparatory School |
+| Kingsley Tran | trank30@fordhamprep.org | Fordham Preparatory School |
 
 ---
 
