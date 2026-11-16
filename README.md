@@ -22,7 +22,7 @@ FieldWise is a satellite map of the contiguous United States that shows where co
 | | |
 |---|---|
 | **Live demo** | _add Render URL_ |
-| **Demo video** | _add YouTube (unlisted) or Google Drive link_ |
+| **Demo video** | https://youtu.be/Vy-Bu-6TMTs |
 | **Run locally** | See [Run it locally](#run-it-locally) below |
 
 ---
@@ -111,8 +111,8 @@ Run the tests with `pytest`.
 
 | Full name | Email | School |
 |---|---|---|
-| _Full name_ | _email_ | _school_ |
-| _Full name_ | _email_ | _school_ |
+| Sean Egan | _email_ | _school_ |
+| Kingsley Tran | _email_ | _school_ |
 
 ---
 
