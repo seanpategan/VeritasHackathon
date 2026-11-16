@@ -109,10 +109,10 @@ Run the tests with `pytest`.
 
 ## Team
 
-| Full name | Email | School |
-|---|---|---|
-| Sean Egan | egans27@fordhamprep.org | Fordham Preparatory School |
-| Kingsley Tran | trank30@fordhamprep.org | Fordham Preparatory School |
+| Full name | School |
+|---|---|
+| Sean Egan | Fordham Preparatory School |
+| Kingsley Tran | Fordham Preparatory School |
 
 ---
 
