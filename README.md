@@ -105,16 +105,6 @@ flask --app wsgi run --debug
 
 Run the tests with `pytest`.
 
----
-
-## Team
-
-| Full name | School |
-|---|---|
-| Sean Egan | Fordham Preparatory School |
-| Kingsley Tran | Fordham Preparatory School |
-
----
 
 ## Credits
 
