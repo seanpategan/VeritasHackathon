@@ -1,4 +1,4 @@
-# 🌾 FieldWise
+# FieldWise
 
 **Explore farmland. Understand better practices.**
 
@@ -176,7 +176,7 @@ Run the tests with `pytest`.
 
 ### Tutorials
 
-- _None used. Add any here._
+- _None used._
 
 ---
 
